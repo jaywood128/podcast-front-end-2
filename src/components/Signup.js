@@ -3,11 +3,16 @@ import React from "react";
 
 const Signup = () => {
   const [loading, setLoading] = useState("");
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+  });
   const [result, setResult] = useState({});
 
   async function postFormFetch() {
-    console.log(inputs);
+    console.log(input);
     const settings = {
       method: "POST",
       headers: {
@@ -47,54 +52,66 @@ const Signup = () => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <div>
-        <label>Name</label>
-        <input
-          type="text"
-          name="name"
-          // onChange={(e) => setInput(e.target.value)}
-          onChange={(e) => handleInputChange(e)}
-          value={input.name}
-          required
-        />
-        <br />
+    <div className="main">
+      <div className="signup-wrap">
+        <div className="h2">
+          <h2>Sign up</h2>
+        </div>
+
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="input-wrap">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              // onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => handleInputChange(e)}
+              value={input.name}
+              required
+            />
+            <br />
+          </div>
+          <div className="input-wrap">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              // onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => handleInputChange(e)}
+              value={input.username}
+              required
+            />
+            <br />
+          </div>
+          <div className="input-wrap">
+            <input
+              type="email"
+              name="email"
+              // onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => handleInputChange(e)}
+              value={input.email}
+              required
+              placeholder="Email"
+            />
+          </div>
+          <div className="input-wrap">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              // onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => handleInputChange(e)}
+              value={input.password}
+            />
+          </div>
+          <div className="signup-button-container">
+            <button className="signup-buttom" type="submit">
+              Sign Up
+            </button>
+          </div>
+        </form>
       </div>
-      <div>
-        <label>Username</label>
-        <input
-          type="text"
-          name="username"
-          // onChange={(e) => setInput(e.target.value)}
-          onChange={(e) => handleInputChange(e)}
-          value={input.username}
-          required
-        />
-        <br />
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          // onChange={(e) => setInput(e.target.value)}
-          onChange={(e) => handleInputChange(e)}
-          value={input.email}
-          required
-        />
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          // onChange={(e) => setInput(e.target.value)}
-          onChange={(e) => handleInputChange(e)}
-          value={input.password}
-        />
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    </div>
   );
 };
 
